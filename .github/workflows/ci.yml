@@ -1,13 +1,11 @@
 name: CI
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - dev
       - master
-  schedule:
-    # Build a nighly image every day at 2am UTC
-    - cron:  '0 2 * * *'
 
 # only run the latest commit to avoid cache overwrites
 concurrency:
