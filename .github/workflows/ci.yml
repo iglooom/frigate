@@ -51,8 +51,8 @@ jobs:
         with:
           images: ghcr.io/${{ steps.lowercaseRepo.outputs.lowercase }}
           tags: |
-            type=raw,value=${{ github.ref_name }}-${{ env.SHORT_SHA }},enable=${{ github.event_name != 'schedule') }}
-            type=raw,value=nightly,enable=${{ github.event_name == 'schedule') }}
+            type=raw,value=${{ github.ref_name }}-${{ env.SHORT_SHA }}
+            type=raw,value=nightly
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
@@ -69,8 +69,8 @@ jobs:
         with:
           images: ghcr.io/${{ steps.lowercaseRepo.outputs.lowercase }}
           tags: |
-            type=raw,value=${{ github.ref_name }}-${{ env.SHORT_SHA }}-tensorrt,enable=${{ github.event_name != 'schedule') }}
-            type=raw,value=nightly-tensorrt,enable=${{ github.event_name == 'schedule') }}
+            type=raw,value=${{ github.ref_name }}-${{ env.SHORT_SHA }}-tensorrt
+            type=raw,value=nightly-tensorrt
       - name: Build and push TensorRT
         uses: docker/build-push-action@v4
         with:
